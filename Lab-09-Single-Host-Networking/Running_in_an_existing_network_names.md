@@ -49,8 +49,9 @@ Note that we have shortened the output for readability. Please also note that th
 5. To clean up the container and network, we can use the following command:
 
 ```
-$ docker container rm --force web
-$ docker network rm test-net
+docker container rm --force web
+docker container rm --force containerweb2
+docker network rm test-net
 ```
 
 In the next section, we are going to learn how to expose container ports on the container host.
