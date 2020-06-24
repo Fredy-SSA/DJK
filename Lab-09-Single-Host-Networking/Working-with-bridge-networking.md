@@ -332,5 +332,5 @@ docker network rm somelocal-net
 docker network prune --force
 
 ```
-I used the **--force**(or **-f**) argument here to prevent Docker from reconfirming that I really want to remove all unused networks.
+I used the **--force** (or **-f**) argument here to prevent Docker from reconfirming that I really want to remove all unused networks.
 
