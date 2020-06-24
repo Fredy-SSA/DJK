@@ -49,6 +49,7 @@ We are not limited to just the bridge network, as Docker allows us to define our
 
 ```bash
 docker network create --driver bridge sample-net
+docker network ls
 ```
 If we do this, we can then inspect what subnet Docker has created for this new custom network, as follows:
 
@@ -66,6 +67,7 @@ Evidently, Docker has just assigned the next free block of IP addresses to our n
 
 ```bash
 docker network create --driver bridge --subnet "10.1.0.0/16" somelocal-net
+docker network ls
 ```
 
 **Tip: To avoid conflicts due to duplicate IP addresses, make sure you avoid creating networks with overlapping subnets.**
