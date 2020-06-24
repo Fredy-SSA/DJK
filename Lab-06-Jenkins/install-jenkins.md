@@ -18,8 +18,19 @@ cd ./Jenkins
 
 **2. Now, let's run Jenkins in a Docker container. Use the following command to do so:**
 
+- wsl\bash
+```
+docker run --rm -d \
+   --name jenkins \
+   -u root \
+   -p 8080:8080 \
+   -v jenkins-data:/var/jenkins_home \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   -v $(Pwd)/:/home \
+   jenkinsci/blueocean
+```
 
-- Powershell
+- PS
 ```powershell
 
 docker run --rm -d `
@@ -44,7 +55,7 @@ Note that we are running as the root user inside the container and that we are m
 
 5. Unlock Jenkins with the admin password that you retrieved with the command.
 
-```bash
+```
 docker container exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
@@ -117,9 +128,12 @@ pipeline {
 
 9. Now that we have prepared Jenkins, we can start to integrate our sample application. Let's start with the build step. First, we initialize the jenkins-pipeline project folder as a Git project:
 
-```bash
+```
 mkdir jenkins-pipeline 
 cd jenkins-pipeline 
+
+git pull https://github.com/Fredy-SSA/jenkins-pipeline
+
 git init
 ```
 
