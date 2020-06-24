@@ -15,7 +15,7 @@ services:
     - 80:3000
  db:
     image: fredysa/db:1.0
-    build: db
+    build: database
     volumes:
     - pets-data:/var/lib/postgresql/data
 
@@ -39,6 +39,8 @@ Navigate to the ch11 subfolder of the fods folder and then build the images:
 ```
 ~\Lab-10-Docker-Compose\sample\docker-compose
 docker-compose build
+
+docker-compose -f docker-compose-default.yml up -d
 ```
 
 If we enter the preceding command, then the tool will assume that there must be a file in the current directory called docker-compose.yml and it will use that one to run. In our case, this is indeed the case and the tool will build the images.
