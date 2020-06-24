@@ -14,9 +14,9 @@ Of course, the preceding pipeline just outputs a message during each stage and d
 
 mkdir jenkins-pipeline 
 cd jenkins-pipeline 
-
-git pull https://github.com/Fredy-SSA/jenkins-pipeline.git
 git init
+git pull https://github.com/Fredy-SSA/jenkins-pipeline.git
+
 ```
 
 
