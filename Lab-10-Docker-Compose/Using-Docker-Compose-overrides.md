@@ -68,4 +68,4 @@ Note that with the first -f parameter, we provide the base Docker Compose file, 
 - Declaring them in the Docker file defines a default value
 - Declaring the same variable in the Docker Compose file overrides the value from the Dockerfile
 
-Had we followed the standard naming convention and called the base file just **docker-compose.yml** and the override file **docker-compose.override.yml** instead, then we could have started the application with **docker-compose up -d**without explicitly naming the compose files.
+Had we followed the standard naming convention and called the base file just **docker-compose.yml** and the override file **docker-compose.override.yml** instead, then we could have started the application with **docker-compose up -d** without explicitly naming the compose files.
