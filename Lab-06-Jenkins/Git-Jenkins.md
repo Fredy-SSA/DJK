@@ -1,17 +1,6 @@
 # Build the CI/CD pipeline:
+Git address: https://github.com/fredy-ssa/jenkins-pipeline.git
 
-1. Commit the code just created locally with the following command:
-
-```bash
-git add -A 
-git commit -m "First commit"
-```
-
-2. To avoid all of the node modules being saved to GitHub, add a .gitignore file to the project root folder with the following content:
-
-```nodejs
-node_modules
-```
 
 3. **Now, we need to define a repository on GitHub**. 
 
@@ -35,6 +24,7 @@ git push -u origin master
 5. The next thing is to go back to Jenkins (localhost:8080) and modify the configuration of the project. Log in to Jenkins if needed and select your project, sample-pipeline.
 
 6. Then, select Configure in the main menu. Select the Pipeline tab and modify the settings so that they look similar to this:
+    - Add : https://github.com/fredy-ssa/jenkins-pipeline.git
 
 ![Jenkins](./img/l6-git-ci-02.png)
 
