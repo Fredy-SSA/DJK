@@ -68,7 +68,7 @@ Evidently, Docker has just assigned the next free block of IP addresses to our n
 ```bash
 docker network create --driver bridge --subnet "10.1.0.0/16" somelocal-net
 docker network ls
-docker network inspect somelocal-net | ? { $_  -like "*somelocal-net*" }
+docker network inspect somelocal-net | ? { $_  -like "*Subnet*"  }
 ```
 
 **Tip: To avoid conflicts due to duplicate IP addresses, make sure you avoid creating networks with overlapping subnets.**
