@@ -8,9 +8,10 @@ We are going to use Jenkins (https://jenkins.io) as our automation server. Other
 
 Of course, the preceding pipeline just outputs a message during each stage and does nothing else. It is useful though as a starting point from which to build up our pipeline:
 
-**1. Create a project folder named jenkins-pipeline and navigate to it:**
+**1. Create a project folder named jenkins-pipeline and navigate to it:** - (Outside the LAB)
 
 ```
+
 mkdir jenkins-pipeline 
 cd jenkins-pipeline 
 
