@@ -22,32 +22,26 @@ Now, let's demonstrate how this works:
 ```
 $ docker network create --driver bridge test-net
 ```
+
 2. Next, we run a container attached to this network:
 
 ```
-$ docker container run -it --name web -d --network test-net alpine:latest /bin/sh
+docker container run --name web -it --rm -d --network test-net  alpine:latest /bin/sh
  
 ```
 
 3. Finally, we run another container and attach it to the network of our web container:
 
 ```
-$ docker container run -it --rm --network test-net --name container alpine:latest /bin/sh
 
+docker container run --name containerweb2  -it --rm --network test-net  alpine:latest /bin/sh
 ```
 
-Specifically, note how we define the network: **--network container:web**. This tells Docker that our new container shall use the same network namespace as the container called web.
 
-4. Since the new container is in the same network namespace as the web container running nginx, we're now able to access nginx on localhost! We can prove this by using the wget tool, which is part of the Alpine container, to connect to nginx. We should see the following:
+4. Ping Test
 
 ```
-/ # wget -qO - localhost
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-...
-</html>
+ping  web
 ```
 
 Note that we have shortened the output for readability. Please also note that there is an important difference between running two containers attached to the same network and two containers running in the same network namespace. In both cases, the containers can freely communicate with each other, but in the latter case, the communication happens over localhost.
