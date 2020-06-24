@@ -25,7 +25,7 @@ $ docker network create --driver bridge test-net
 2. Next, we run a container attached to this network:
 
 ```
-$ docker container run --name web -d --network test-net alpine:latest /bin/sh
+$ docker container run -it --name web -d --network test-net alpine:latest /bin/sh
  
 ```
 
