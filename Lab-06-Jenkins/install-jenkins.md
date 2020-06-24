@@ -10,11 +10,12 @@ Of course, the preceding pipeline just outputs a message during each stage and d
 
 **1. Create a project folder named jenkins-pipeline and navigate to it:**
 
-```bash
-mkdir Jenkins
-cd ./Jenkins
+```
+mkdir jenkins-pipeline 
+cd jenkins-pipeline 
 
 ```
+
 
 **2. Now, let's run Jenkins in a Docker container. Use the following command to do so:**
 
