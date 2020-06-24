@@ -25,7 +25,7 @@ Create a new GitHub repository for the Jenkins pipeline sample application
 
 4. After you have clicked the green button, Create repository, go back to you project and execute the following two commands from within the project root folder:
 
-```bash
+```
 git remote add origin https://github.com/fredy-ssa/jenkins-pipeline.git
 git push -u origin master
 ```
@@ -41,7 +41,7 @@ git push -u origin master
 Configuring Jenkins to pull source from GitHub
 With this, we configure Jenkins to pull code from GitHub and use a Jenkinsfile to define the pipeline. Jenkinsfile is expected to be found in the root of the project. 
 
-Note that for the repository URL path, we need to give the **relative path** to the **/home**directory where our project is located. Remember that, when running the Jenkins container, we mapped our own home folder on the host to the **/home** folder inside the Jenkins container with this: **-v $PWd/:/home**.
+Note that for the repository URL path, we need to give the **relative path** to the **/home** directory where our project is located. Remember that, when running the Jenkins container, we mapped our own home folder on the host to the **/home** folder inside the Jenkins container with this: **-v $pwd/:/home**.
 
 7. Hit the green Save button to accept the changes.
 
@@ -88,26 +88,6 @@ git add -A
 git commit -m "Defined code based Pipeline"
 git push origin master
 ```
-
-
-
-## Commit node to Docker Hub
-### Built docker file from ./jenkins-pipeline
-https://github.com/Fredy-SSA/jenkins-pipeline
-
-```
-docker image build -t fredysa/node-docker .
-docker image ls
-docker container run --rm -it fredysa/node-docker /bin/sh
-docker container run --rm -it fredysa/sample:1.5 /bin/sh
-docker commit -m "Added Node Server" -a "node" node fredysa/node:latest
-docker push fredysa/node-docker:latest
-
-```
-
-
-
-Once the code is pushed to GitHub, go back to Jenkins.
 
 Select your sample-pipeline project and click Build now in the main menu. Jenkins will start to build the pipeline. 
 
