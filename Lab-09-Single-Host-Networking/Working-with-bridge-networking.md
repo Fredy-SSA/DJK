@@ -212,9 +212,12 @@ Now, let's create two additional containers, c3 and c4, and attach them to somel
 
 
 
-```bash
+```
 docker container run --name c3 -d --network somelocal-net alpine:latest ping 127.0.0.1
 docker container run --name c4 -d --network somelocal-net alpine:latest ping 127.0.0.1
+
+docker container exec -it c3 /bin/sh
+docker container exec -it c4 /bin/sh
 ```
 
 Let's inspect network somelocal-net and confirm that containers c3 and c4 are indeed attached to it:
@@ -245,7 +248,7 @@ The next question we're going to ask ourselves is whether the c3 and c4 containe
 
 To demonstrate that this is indeed the case, we can exec into the c3 container:
 
-```bash
+```
 docker container exec -it c3 /bin/sh
 ```
 
