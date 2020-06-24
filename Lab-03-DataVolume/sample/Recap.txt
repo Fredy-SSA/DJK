@@ -13,6 +13,8 @@ docker container commit comtest containerulmeu
 
 docker image ls
 
+- 
+
 docker container commit comtest fredysa/my-alpine
 
 # Volume for DB
