@@ -14,6 +14,8 @@ Of course, the preceding pipeline just outputs a message during each stage and d
 mkdir jenkins-pipeline 
 cd jenkins-pipeline 
 
+git pull https://github.com/Fredy-SSA/jenkins-pipeline
+git init
 ```
 
 
@@ -133,9 +135,7 @@ pipeline {
 mkdir jenkins-pipeline 
 cd jenkins-pipeline 
 
-git pull https://github.com/Fredy-SSA/jenkins-pipeline
 
-git init
 ```
 
 10. Add a package.json file to this folder with this content:
