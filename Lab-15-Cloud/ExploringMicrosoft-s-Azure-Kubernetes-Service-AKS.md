@@ -8,9 +8,11 @@ The second choice is **Azure Container Service (ACS)**, which provides a way to 
 In this section, we will concentrate on the most popular offering, based on Kubernetes. It is called AKS and can be found here: **`https://azure.microsoft.com/en-us/services/kubernetes-service/`**. AKS makes it easy for you to deploy applications into the cloud and run them on Kubernetes. All the difficult and tedious management tasks are handled by Microsoft and you can concentrate fully on your applications. What that means is that you will never have to deal with tasks such as installing and managing Kubernetes, upgrading Kubernetes, or upgrading the operating system of the underlying Kubernetes nodes. All this is handled by the experts at Microsoft Azure. Furthermore, you will never have to deal with etc or Kubernetes master nodes. This is all hidden from you, and the only things you will interact with are the Kubernetes worker nodes that run your applications.
 
 # Preparing the Azure CLI
+## Install Azure CLI
 ```
 choco install azure-cli -y
 ```
+
 # Docker
 That said, let's start. We assume that you have created a free trial account or that you are using an existing account on Azure. There are various ways to interact with your Azure account. We will use the Azure CLI running on our local computer. We can either download and install the Azure CLI natively on our computer or run it from within a container running on our local Docker for Desktop. Since this book is all about containers, let's select the latter approach.
 
@@ -63,11 +65,14 @@ docker-compose exec az /bin/bash
 bash-5.0#
 ```
 
+We will find ourselves running in a Bash shell inside the container. 
 
-We will find ourselves running in a Bash shell inside the container. Let's first check the version of the CLI:
+# Azure CLI or Docker Image
+
+Let's first check the version of the CLI:
 
 ```
-bash-5.0# az --version
+az --version
 ```
 This should result in an output similar to this (shortened):
 
@@ -80,7 +85,7 @@ Your CLI is up-to-date.
 OK, we're running on version **2.0.78**. Next, we need to log in to our account. Execute this command:
 
 ``
-bash-5.0# az login
+az login
 ``
 
 You will be presented with the following message:
@@ -114,7 +119,7 @@ Now, we are ready to first move our container images to Azure.
 First, we create a new resource group named **animal-rg**. In Azure, resource groups are used to logically group a collection of associated resources. To have an optimal cloud experience and keep latency low, it is important that you select a data center located in a region near you. You can use the following command to list all regions:
 
 ```
-bash-5.0# az account list-locations
+az account list-locations
 
 [
   {
@@ -134,7 +139,7 @@ This will give you a rather long list of all possible regions you can select fro
 The command to create a resource group is simple; we just need a name for the group and the location:
 
 ```
-bash-5.0# az group create --name animals-rg --location westeurope
+az group create --name animals-rg --location westeurope
 
 {
   "id": "/subscriptions/186760ad-9152-4499-b317-c9bff441fb9d/resourceGroups/animals-rg",
@@ -156,7 +161,7 @@ When running a containerized application in production, we want to make sure tha
 So, what can we do? Well, the solution is to use a container image registry that is close to our cluster and that is in the same security context. In Azure, we can create an **Azure container registry (ACR)** and host our images there. Let's first create such a registry:
 
 ```
-bash-5.0# az acr create --resource-group animals-rg --name fredysa --sku Basic
+az acr create --resource-group animals-rg --name fredysa --sku Basic
 ```
 
 Note that **<acr-name>** needs to be unique. In my case, I have chosen the name **fredysa**. The (shortened) output looks like this:
@@ -176,7 +181,7 @@ Note that **<acr-name>** needs to be unique. In my case, I have chosen the name 
 After successfully creating the container registry, we need to log in to that registry using the following:
 
 ```
-bash-5.0# az acr login --name fredysa
+az acr login --name fredysa
 Login Succeeded
 WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -206,8 +211,8 @@ docker image tag fredysa/web:1.0 fredysa.azurecr.io/web:1.0
 Then, we can push them to our ACR:
 
 ```
-bash-5.0# docker image push fredysa.azurecr.io/db:1.0
-bash-5.0# docker image push fredysa.azurecr.io/web:1.0
+docker image push fredysa.azurecr.io/db:1.0
+docker image push fredysa.azurecr.io/web:1.0
 ```
 
 To double-check that our images are indeed in our ACR, we can use this command:
@@ -227,7 +232,7 @@ Indeed, the two images we just pushed are listed. With that, we are ready to cre
 Once again, we will be using our custom Azure CLI to create the Kubernetes cluster. We will have to make sure that the cluster can access our ACR instance, which we just created and is where our container images reside. So, the command to create a cluster named **animals-cluster** with two worker nodes looks like this:
 
 ```
-bash-5.0# az aks create \
+az aks create \
     --resource-group animals-rg \
     --name animals-cluster \
     --node-count 2 \
@@ -243,7 +248,7 @@ This command takes a while, but after a few minutes, we should receive some JSON
 To access the cluster, we need **kubectl**. We can easily get it installed in our Azure CLI container using this command:
 
 ```
-bash-5.0# az aks install-cli
+az aks install-cli
 ```
 
 Having installed kubectl, we need the necessary credentials to use the tool to operate on our new Kubernetes cluster in Azure. We can get the necessary credentials with this:
