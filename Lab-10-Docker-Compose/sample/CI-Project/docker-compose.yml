@@ -1,0 +1,13 @@
+version: "2.4"
+services:
+  web:
+    image: fredysa/web:1.0
+    ports:
+      - 3000:3000
+  db:
+    image: fredysa/db:1.0
+    volumes:
+      - pets-data:/var/lib/postgresql/data
+
+volumes:
+  pets-data:
