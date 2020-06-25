@@ -67,8 +67,8 @@ We can then use this IP address and navigate to **`http://<IP address>:3000/pet`
 Once you are done playing with the application, delete the cluster and the project in the Google Cloud console to avoid any unnecessary costs.
 
 ```
-gcloud container clusters delete animal-cluster
-gcloud projects delete animal-cluster
+gcloud container clusters delete cluster-1
+gcloud projects delete massai-mara
 ```
 We have created a hosted Kubernetes cluster in GKE. We have then used Cloud Shell, provided through the GKE portal, to first clone our **labs** GitHub repository and then the **kubectl** tool to deploy the animals application into the Kubernetes cluster. 
 
