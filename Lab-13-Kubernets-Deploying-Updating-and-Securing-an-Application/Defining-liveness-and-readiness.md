@@ -92,7 +92,7 @@ docker-compose build
 -or
 docker image build -t fredysa/demo:1.0 .
 
-docker pull fredysa/demo:1.0
+docker push fredysa/demo:1.0
 
 ```
 
