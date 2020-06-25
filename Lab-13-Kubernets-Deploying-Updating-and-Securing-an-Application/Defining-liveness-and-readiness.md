@@ -88,6 +88,8 @@ Let's try this out:
 Navigate to the **~/Lab-13-.../sample/probes** folder and build the Docker image with the following command:
 
 ```
+docker-compose build
+-or
 docker image build -t fredysa/demo:1.0 .
 
 docker pull fredysa/demo:1.0
