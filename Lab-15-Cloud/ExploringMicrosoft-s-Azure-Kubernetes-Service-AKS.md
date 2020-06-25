@@ -8,6 +8,10 @@ The second choice is **Azure Container Service (ACS)**, which provides a way to 
 In this section, we will concentrate on the most popular offering, based on Kubernetes. It is called AKS and can be found here: **`https://azure.microsoft.com/en-us/services/kubernetes-service/`**. AKS makes it easy for you to deploy applications into the cloud and run them on Kubernetes. All the difficult and tedious management tasks are handled by Microsoft and you can concentrate fully on your applications. What that means is that you will never have to deal with tasks such as installing and managing Kubernetes, upgrading Kubernetes, or upgrading the operating system of the underlying Kubernetes nodes. All this is handled by the experts at Microsoft Azure. Furthermore, you will never have to deal with etc or Kubernetes master nodes. This is all hidden from you, and the only things you will interact with are the Kubernetes worker nodes that run your applications.
 
 # Preparing the Azure CLI
+```
+choco install azure-cli -y
+```
+# Docker
 That said, let's start. We assume that you have created a free trial account or that you are using an existing account on Azure. There are various ways to interact with your Azure account. We will use the Azure CLI running on our local computer. We can either download and install the Azure CLI natively on our computer or run it from within a container running on our local Docker for Desktop. Since this book is all about containers, let's select the latter approach.
 
 The latest version of the Azure CLI can be found on Docker Hub. Let's pull it:
