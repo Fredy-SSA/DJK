@@ -3,13 +3,19 @@ Google is the inventor of Kubernetes and, to this date, the driving force behind
 
 - In the main menu, select Kubernetes Engine. The first time you do that, it will take a few moments until the Kubernetes engine is initialized.
 - Next, create a new project and name it **massai-mara**; this may take a moment.
-- nce this is ready, we can create a cluster by clicking on Create Cluster in the popup.
+- Once this is ready, we can create a cluster by clicking on Create Cluster in the popup.
+
+    ![gk](./img/gk_app1.png)
+
 - Select the Your first cluster template on the left-hand side of the form.
-- Name the cluster **animals-cluster**, select the region or zone that's closest to you, leave all other settings in the Create a Kubernetes Cluster form with their default values, and click on Create at the bottom of the form.
+
+    ![gk](./img/gk_app2.png)
+
+- Name the cluster **cluster-1**, select the region or zone that's closest to you, leave all other settings in the Create a Kubernetes Cluster form with their default values, and click on Create at the bottom of the form.
 
 It will again take a few moments to provision the cluster for us. Once the cluster has been created, we can open Cloud Shell by clicking on the shell icon in the upper-right corner of the view. This should look similar to the following screenshot:
 
-![gks](./img/l15-gks-p1.png)
+   ![gk](./img/gk_app3.png)
 
 The first Kubernetes cluster ready and Cloud Shell open in GKE
 
@@ -32,33 +38,6 @@ It has pretty much the same content as the same file we used in the previous cha
 
 Also, note that we are not using Google Container Registry to host the container images but are instead directly pulling them from Docker Hub. It is very easy, and similar to what we have learned in the section about AKS, to create such a container registry in Google Cloud.
 
-Before we can continue, we need to set up **gcloud** and **kubectl** credentials:
-
-Open  https://console.developers.google.com/projectcreate?
-Create animal-cluster project
-
-- https://console.developers.google.com/apis/library/cloudresourcemanager.googleapis.com?project=animal-cluster
-- https://console.developers.google.com/apis/library/container.googleapis.com?project=animal-cluster
-- create Service Accounts
-- create key (download key to your github, update project)
-
-
-```
-#gcloud auth activate-service-account [Acount]  --key-file key.json
-gcloud auth activate-service-account animal@animal-cluster.iam.gserviceaccount.com --key-file key.json
-
-gcloud config set project animal-cluster
-gcloud config set compute/zone europe-west1-b
-gcloud container clusters create animal-cluster --num-nodes=2
-```
-
-![gks](./img/l15-gks-p3.png)
-
-```
-gcloud container clusters get-credentials animal-cluster --zone europe-west1-b
-Fetching cluster endpoint and auth data.
-kubeconfig entry generated for animals-cluster.
-```
 
 Having done that, it's time to deploy the application:
 
