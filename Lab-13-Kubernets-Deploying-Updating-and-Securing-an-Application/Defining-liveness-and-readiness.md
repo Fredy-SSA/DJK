@@ -94,6 +94,8 @@ docker image build -t fredysa/demo:1.0 .
 
 docker push fredysa/demo:1.0
 
+docker image ls 
+
 ```
 
 Use kubectl to deploy the sample pod that's defined in probes-demo.

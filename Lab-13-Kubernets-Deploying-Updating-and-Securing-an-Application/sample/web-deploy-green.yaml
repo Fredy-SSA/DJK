@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: web-green
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: pets

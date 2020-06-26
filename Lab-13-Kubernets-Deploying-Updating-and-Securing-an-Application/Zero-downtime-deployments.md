@@ -261,7 +261,9 @@ If we realize that something went wrong with our green deployment and the new ve
 Once the green version of the component is running as expected and performing well, we can decommission the blue version:
 
 ```
-$ kubectl delete deploy/web-blue
+kubectl delete deploy/web-blue
+kubectl delete deployment.apps/web-green 
+kubectl delete service/web 
 ```
 
 When we're ready to deploy a new version, **3.0**, this one becomes the blue version. We update the **~/Lab-13../sample//web-deploy-blue.yaml** file accordingly and deploy it. Then, we flip the service web from **green** to **blue**, and so on.
