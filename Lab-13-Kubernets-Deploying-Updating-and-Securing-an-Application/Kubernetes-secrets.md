@@ -137,6 +137,10 @@ Since any application written in any language can read simple files, this mechan
 
 Sometimes, though, applications expect secrets to be available in environment variables. Let's look at what Kubernetes offers us in this case.
 
+```
+kubectl delete -f web-deploy-secret.yaml
+```
+
 # Secret values in environment variables
 Let's say our web component expects the username in the environment variable, **PETS_USERNAME**, and the password in **PETS_PASSWORD**. If this is the case, we can modify our deployment YAML so that it looks as follows:
 
