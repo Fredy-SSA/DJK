@@ -8,7 +8,7 @@ Here is a list of the topics we're going to discuss:
 - [Creating and mounting data volumes](Creating-and-mounting-data-volumes.md)
 - [Sharing data between containers](Sharing-data-between-containers.md)
 - [Using host volumes](Using-host-volumes.md)
-- [Defining volumes in images](Defining-volumes-in-images.md)
+- [Defining volumes in images](Volume.md)
 - [Configuring containers](Configuring-containers.md)
 
 # Technical requirements
