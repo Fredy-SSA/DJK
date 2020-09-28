@@ -216,7 +216,12 @@ In the previous section, we used the **-l** parameter in the list command. Try t
 
 ```
 $ docker container ps
+
+docker run -d -p 80:80 docker/getting-started
+
 ```
+
+
 
 Next, let's learn how to stop and restart containers.
 
