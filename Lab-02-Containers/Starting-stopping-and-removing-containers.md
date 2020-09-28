@@ -217,7 +217,7 @@ In the previous section, we used the **-l** parameter in the list command. Try t
 ```
 $ docker container ps
 
-docker run -d -p 80:80 docker/getting-started
+docker run -d -p 80:81 docker/getting-started
 
 ```
 

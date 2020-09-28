@@ -40,9 +40,7 @@ Docker includes multiple logging mechanisms to help us to get information from r
 We have seen that the logging driver can be set globally in the Docker daemon configuration file. But we can also define the logging driver on a container by container basis. In the following example, we are running a **busybox** container and use the **--log-driver** parameter to configure the none logging driver:
 
 ```
-$ docker container run --name test -it \
-    --log-driver none \
-    busybox sh -c 'for N in 1 2 3; do echo "Hello $N"; done'
+docker container run --name test -it --log-driver none   busybox sh -c 'for N in 1 2 3; do echo "Hello $N"; done'
 ```
 
 We should see the following:
