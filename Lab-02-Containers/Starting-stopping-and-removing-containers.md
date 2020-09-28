@@ -203,6 +203,10 @@ You might wonder where this is useful. I will show you a command where it is ver
 
 ```
 $ docker container rm -f $(docker container ls -a -q)
+
+PS>
+$id = docker container ls -a -q
+docker container rm -f  $id
 ```
 Lean back and take a deep breath. Then, try to find out what the preceding command does. Don't read any further until you find the answer or give up.
 
