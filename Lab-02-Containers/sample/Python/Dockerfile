@@ -12,5 +12,4 @@ RUN apt-get update \
 WORKDIR /app
 COPY ./requirements.txt /app/
 COPY ./main.py /app/
-ENV PATH=/root/.local:$PATH
 CMD ["python3", "main.py"]
