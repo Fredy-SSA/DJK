@@ -11,4 +11,6 @@ RUN apt-get update \
   && mkdir -p  /app 
 WORKDIR /app
 COPY ./requirements.txt /app/
-CMD ["python", "main.py"]
+COPY ./main.py /app/
+ENV PATH=/root/.local:$PATH
+CMD ["python3", "main.py"]
