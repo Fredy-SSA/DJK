@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+
+  my_service:
+    image: centos:7
+    entrypoint: "cat /run/secrets/my_secret"
+    secrets:
+      - my_secret
+
+secrets:
+  my_secret:
+    file: ./secret.txt
