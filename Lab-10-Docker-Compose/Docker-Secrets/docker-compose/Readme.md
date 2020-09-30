@@ -36,5 +36,5 @@ docker-compose up --build my_service
 ```
 You should see your container output your secret.
 
-
+ .
 
