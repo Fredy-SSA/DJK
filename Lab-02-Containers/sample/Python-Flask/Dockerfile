@@ -1,21 +1,12 @@
-# first stage
-FROM python:3.8 AS builder
-COPY requirements.txt .
+FROM python:3
 
-# install dependencies to the local user directory (eg. /root/.local)
-RUN pip install --user -r requirements.txt
-CMD apt-get install python3-flask
+COPY ./requirements.txt /app/requirements.txt
 
-# second unnamed stage
-FROM python:3.8-slim
-WORKDIR /code
+WORKDIR /app
 
+RUN pip install -r requirements.txt
 
-# copy only the dependencies installation from the 1st stage image
-COPY --from=builder /root/.local/bin /root/.local
-COPY ./src .
+COPY . /app
 
-# update PATH environment variable
-ENV PATH=/root/.local:$PATH
-
-CMD [ "python", "./server.py" ]
+ENTRYPOINT [ "python3" ]
+CMD [ "app.py" ]
