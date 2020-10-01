@@ -1,7 +1,0 @@
-docker build -t pyf .
-
-docker image ls
-
-docker ps
-
-docker run -d -p 5000:5000 pyf 
