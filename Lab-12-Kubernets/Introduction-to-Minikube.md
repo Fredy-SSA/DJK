@@ -80,4 +80,11 @@ NAME STATUS ROLES AGE VERSION
 minikube Ready master 47d v1.17.3
 ```
 
+
 Evidently, we have a cluster of one node, which in my case has Kubernetes v1.17.3 installed on it.
+
+
+# Open Gui Dashboard Minikube 
+```
+minikube dashboard
+```
