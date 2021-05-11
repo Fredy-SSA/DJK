@@ -22,5 +22,7 @@ Jenkins offers a simple way to set up a continuous integration or **continuous d
 - Jenkins on Docker Hub at https://hub.docker.com/_/jenkins/
 - Cheat sheet: https://www.edureka.co/blog/cheatsheets/jenkins-cheat-sheet/
 
+# ! Manage plugin - Docker-Pipeline is missing 
+
 
 
