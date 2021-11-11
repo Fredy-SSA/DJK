@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cweb
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: cweb
+      service: cweb
+  template:
+    metadata:
+      labels:
+        app: cweb
+        service: cweb
+    spec:
+      containers:
+      - image: fredysa/customweb:1.0
+        name: cweb
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cweb
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: cweb
+    service: cweb
